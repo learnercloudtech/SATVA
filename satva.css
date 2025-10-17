@@ -1,0 +1,296 @@
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+      background: transparent;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .navbar .btn {
+      background: linear-gradient(90deg, #6a5acd, #1e90ff);
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: #fff !important;
+    }
+
+    
+    .hero {
+      background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb") no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .hero .overlay {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 50px;
+      border-radius: 10px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+    .cta {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .btn {
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn.primary {
+      background: linear-gradient(90deg, #6a5acd, #1e90ff);
+      color: #fff;
+    }
+    .btn.secondary {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Modal (Shared style) */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      width: 350px;
+      text-align: center;
+      position: relative;
+    }
+    .modal-content h2 {
+      margin-bottom: 20px;
+    }
+    .modal-content button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .modal-content p {
+      font-size: 12px;
+      margin-top: 15px;
+      color: #555;
+    }
+    .modal-content a {
+      color: #1e90ff;
+      text-decoration: none;
+    }
+
+    /* Screening */
+    .screening {
+      height: 100vh;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a5acd, #1e90ff);
+      color: #fff;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    .question-box {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 600px;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #fff;
+      color: #333;
+      transition: 0.3s;
+    }
+    .options button:hover {
+      background: #f0f0f0;
+    }
+    #nextBtn {
+      margin-top: 20px;
+      display: none;
+      float: right;
+    }
+
+    /* Results */
+    .result {
+      height: 100vh;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .progress-bar {
+      background: #eee;
+      border-radius: 20px;
+      margin: 10px 0;
+      width: 80%;
+      max-width: 400px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 20px;
+      background: linear-gradient(90deg, #6a5acd, #1e90ff);
+      text-align: right;
+      padding-right: 10px;
+      color: #fff;
+      font-size: 12px;
+      line-height: 20px;
+      width: 0;
+      transition: width 1s ease;
+    }
+
+    /* Stress & Anxiety */
+    .stress {
+      display: none;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: #222;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .stress h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .stress p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+    }
+    .stress h2 {
+      margin-top: 40px;
+      font-size: 24px;
+    }
+    .circle {
+      width: 150px;
+      height: 150px;
+      margin: 30px auto;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      animation: breathe 12s infinite;
+    }
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      41% { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+    .instruction {
+      font-size: 20px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    /* Calm Health */
+    .calmhealth {
+      display: none;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6a5acd, #1e90ff);
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .calmhealth-nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .calmhealth-nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .calmhealth h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .calmhealth p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+    }
+    .calmhealth .btn {
+      font-size: 18px;
+      padding: 14px 28px;
+    }
+    .success-msg {
+      font-size: 18px;
+      color: green;
+      margin-top: 15px;
+    }
+  
