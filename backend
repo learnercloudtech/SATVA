@@ -1,0 +1,55 @@
+//server.js
+import express from "express";
+import fs from "fs";
+import path from "path";
+import bodyParser from "body-parser";
+import cors from "cors";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, "public"))); 
+// Place your index.html, style.css, script.js inside /public
+
+// Simple API route for "Contact Us"
+app.post("/api/contact", (req, res) => {
+  const { name, email, problem } = req.body;
+
+  if (!name || !email || !problem) {
+    return res.status(400).json({ success: false, message: "All fields are required." });
+  }
+
+  // Save to local file (can replace with DB)
+  const data = { name, email, problem, date: new Date().toISOString() };
+  const filePath = path.join(__dirname, "contacts.json");
+  const existing = fs.existsSync(filePath)
+    ? JSON.parse(fs.readFileSync(filePath))
+    : [];
+
+  existing.push(data);
+  fs.writeFileSync(filePath, JSON.stringify(existing, null, 2));
+
+  res.json({ success: true, message: "Contact form submitted successfully!" });
+});
+
+// Example route for future screening results
+app.post("/api/screening", (req, res) => {
+  const { results } = req.body;
+  console.log("Screening results:", results);
+  res.json({ success: true, message: "Screening saved!" });
+});
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`);
+});
+
